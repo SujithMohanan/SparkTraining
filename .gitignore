@@ -1,2 +1,9 @@
 *.class
 *.log
+
+.bsp
+.idea
+.git
+project/target
+target
+project/build.properties
