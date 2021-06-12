@@ -11,6 +11,10 @@ object CSVRead {
     .master("local[2]")
     .getOrCreate()
 
+  val baseBallFile = getClass.getResource("/baseball.csv").getFile
+  val customerFile = getClass.getResource("/customer.csv").getFile
+  val customerAttndcFile = getClass.getResource("/customer_attendance.csv").getFile
+
   ///Main method
   def main(args: Array[String]): Unit = {
     /**
@@ -29,9 +33,9 @@ object CSVRead {
 
   //method := dynamicSchema
   def dynamicSchema = {
-    noQuotes("/home/sujith/Downloads/baseball.csv").show()
-    withQuotes("/home/sujith/Downloads/customer.csv").show()
-    fewQuotes("/home/sujith/Downloads/customer_attendance.csv").show()
+    noQuotes(baseBallFile).show()
+    withQuotes(customerFile).show()
+    fewQuotes(customerAttndcFile).show()
   }
 
   //method to process csv without quotes
@@ -61,8 +65,8 @@ object CSVRead {
 
   //method := staticSchema
   def staticSchema = {
-    withStruct("/home/sujith/Downloads/customer_attendance.csv").show()
-    withDDL("/home/sujith/Downloads/customer_attendance.csv").show()
+    withStruct(customerAttndcFile).show()
+    withDDL(customerAttndcFile).show()
   }
 
   //method proving schema with StrutType
