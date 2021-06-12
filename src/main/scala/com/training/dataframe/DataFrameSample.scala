@@ -1,5 +1,6 @@
 package com.training.dataframe
 
+import com.training.dataframe.CSVRead.getClass
 import org.apache.spark.sql.SparkSession
 
 object DataFrameSample {
@@ -13,12 +14,11 @@ object DataFrameSample {
       .getOrCreate()
 
     //inputfile
-    val file = "/home/sujith/Downloads/baseball.csv"
-
+    val baseBallFile = getClass.getResource("/baseball.csv").getFile
     //reading file
     val df = sparkSession.read
       .option("header", true)
-      .csv(file)
+      .csv(baseBallFile)
 
     //display contents
     df.show()
